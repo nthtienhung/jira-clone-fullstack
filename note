@@ -1,1 +1,5 @@
 branch0 merge to master
+
+too much logic in controller is bad thing, move the logic to service.
+
+controller is a route to all the logic
