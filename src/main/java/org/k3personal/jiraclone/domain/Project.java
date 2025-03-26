@@ -1,5 +1,6 @@
 package org.k3personal.jiraclone.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -9,18 +10,23 @@ import java.util.Date;
 @Entity
 public class Project {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //this is how the id is auto gen
     private Long id;
     @NotBlank(message = "project name is required")
     private String projectName;
     @NotBlank(message = "project identifier is required")
     @Size(min = 4, max = 5, message= "please 4 to 5 characters")
+    @Column(updatable= false, unique = true)
     private String projectIdentifier;
+    @NotBlank(message="description is required")
     private String projectDescription;
+    @JsonFormat(pattern="dd-mm-yyyy")
     private Date startDate;
+    @JsonFormat(pattern="dd-mm-yyyy")
     private Date endDate;
-
+    @JsonFormat(pattern="dd-mm-yyyy")
     private Date created_At;
+    @JsonFormat(pattern="dd-mm-yyyy")
     private Date updated_At;
 
     public String getProjectIdentifier() {
