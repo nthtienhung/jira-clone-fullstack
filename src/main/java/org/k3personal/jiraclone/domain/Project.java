@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Entity
 public class Project {
+    //test
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //this is how the id is auto gen
     private Long id;
